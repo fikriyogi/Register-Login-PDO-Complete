@@ -93,7 +93,15 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
             ));
             $query = $pdo->prepare("select * from tbl_users");
             $query->execute();
+
+            // Hitung
+            $sql = "SELECT count(*) FROM `tbl_profil`"; 
+            $result = $pdo->prepare($sql); 
+            $result->execute(); 
+            $number_of_rows = $result->fetchColumn(); 
+
             ?>
+            Data Ada <?= $number_of_rows?>
             <table>
             <tr>
                 <td>Nis</td>
