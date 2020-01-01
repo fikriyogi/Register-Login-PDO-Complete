@@ -12,14 +12,13 @@ if(isset($_POST['btn-login']))
 {
  $email = trim($_POST['txtemail']);
  $upass = trim($_POST['txtupass']);
-   $type = "login";
  
  if($user_login->login($email,$upass))
  {
   $user_login->redirect('home.php');
  } 
  // Masukkan log login ke tabel tbl_log
- if($user_login->log($email, $type)) {
+ if($user_login->log_in($email, $type)) {
   $user_login->redirect('home.php');
  }
 

@@ -106,12 +106,30 @@ class USER
 
 
 
-   public function log($email, $type)
+   public function log_in($email, $type)
  {
   try
   {       
-   // $stmt = $this->conn->prepare("INSERT INTO tbl_users(userName,userEmail,userPass,tokenCode) 
-   //                                              VALUES(:user_name, :user_mail, :user_pass, :active_code)");
+    $type = "login";
+   $stmt = $this->conn->prepare("INSERT INTO tbl_log(userEmail,type) VALUES(:user_mail, :type_id)");
+   $stmt->bindparam(":user_mail",$email);
+   $stmt->bindparam(":type_id",$type);
+
+   $stmt->execute(); 
+   return $stmt;
+
+  }
+  catch(PDOException $ex)
+  {
+   echo $ex->getMessage();
+  }
+ }
+
+ public function log_out($email, $type)
+ {
+  try
+  {  
+    $type = "logout";
    $stmt = $this->conn->prepare("INSERT INTO tbl_log(userEmail,type) VALUES(:user_mail, :type_id)");
    $stmt->bindparam(":user_mail",$email);
    $stmt->bindparam(":type_id",$type);
