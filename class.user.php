@@ -67,11 +67,11 @@ class USER
     if($userRow['userStatus']=="Y")
     {
       if(password_verify($upass, $userRow['userPass']))
-             {
-                $_SESSION['userSession'] = $userRow['userID'];
-                return true;
-             }
-             
+         {
+            $_SESSION['userSession'] = $userRow['userID'];
+            return true;
+         }
+         
      // if($userRow['userPass']==md5($upass))
      // {
      //  $_SESSION['userSession'] = $userRow['userID'];
@@ -83,6 +83,9 @@ class USER
       exit;
      }
     }
+
+    
+
     else
     {
      header("Location: index.php?inactive");
@@ -100,6 +103,29 @@ class USER
    echo $ex->getMessage();
   }
  }
+
+
+
+   public function log($email, $type)
+ {
+  try
+  {       
+   // $stmt = $this->conn->prepare("INSERT INTO tbl_users(userName,userEmail,userPass,tokenCode) 
+   //                                              VALUES(:user_name, :user_mail, :user_pass, :active_code)");
+   $stmt = $this->conn->prepare("INSERT INTO tbl_log(userEmail,type) VALUES(:user_mail, :type_id)");
+   $stmt->bindparam(":user_mail",$email);
+   $stmt->bindparam(":type_id",$type);
+
+   $stmt->execute(); 
+   return $stmt;
+
+  }
+  catch(PDOException $ex)
+  {
+   echo $ex->getMessage();
+  }
+ }
+  
  
  // public function update($hp,$nama_lengkap) {
  //     try {
