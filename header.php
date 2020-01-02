@@ -375,7 +375,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			</div>
 			<!-- end user info -->
 
-			<nav>
+			<nav id="nav">
 				<!-- 
 				NOTE: Notice the gaps after each icon usage <i></i>..
 				Please note that these links work a bit different than
@@ -383,36 +383,14 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				-->
 
 				<ul>
-					<li>
-						<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
-						<ul>
-							<li>
-								<a href="index.html" title="Dashboard"><span class="menu-item-parent">Analytics Dashboard</span></a>
-							</li>
-							<li>
-								<a href="dashboard-marketing.html" title="Dashboard"><span class="menu-item-parent">Marketing Dashboard</span></a>
-							</li>
-							<li>
-								<a href="dashboard-social.html" title="Dashboard"><span class="menu-item-parent">Social Wall</span></a>
-							</li>
-						</ul>	
+					<li <?php if( basename($_SERVER['PHP_SELF'], '.php') == 'index' ) { ?> class="active" <?php } else { ?> <?php }?>>
+						<a href="index" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
 					</li>
-					<li class="top-menu-invisible">
-						<a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">SmartAdmin Intel</span></a>
-						<ul>
-							<li class="">
-								<a href="layouts.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">App Layouts</span></a>
-							</li>
-							<li class="">
-								<a href="skins.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-picture-o"></i> <span class="menu-item-parent">Prebuilt Skins</span></a>
-							</li>
-							<li>
-								<a href="applayout.html"><i class="fa fa-cube"></i> App Settings</a>
-							</li>
-						</ul>
+					<li <?php if( basename($_SERVER['PHP_SELF'], '.php') == 'datatables' ) { ?> class="active" <?php } else { ?> <?php }?>>
+						<a href="datatables.php"><i class="fa fa-lg fa-fw fa-users txt-color-blue"></i> <span class="menu-item-parent">Members</span></a>
 					</li>
-					<li>
-						<a href="inbox.html"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Outlook</span> <span class="badge pull-right inbox-badge margin-right-13">14</span></a>
+					<li <?php if( basename($_SERVER['PHP_SELF'], '.php') == 'setting' ) { ?> class="active" <?php } else { ?> <?php }?>>
+						<a href="setting"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Setting</span> <span class="badge pull-right inbox-badge margin-right-13">14</span></a>
 					</li>
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></a>
@@ -437,233 +415,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 							</li>
 							<li>
 								<a href="hchartable.html">HighchartTable <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
-							</li>
-						</ul>
-					</li>
-					<li class="active open">
-						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tables</span></a>
-						<ul style="display:block;">
-							<li>
-								<a href="table.html">Normal Tables</a>
-							</li>
-							<li class="active">
-								<a href="datatables.html">Data Tables <span class="badge inbox-badge bg-color-greenLight hidden-mobile">responsive</span></a>
-							</li>
-							<li>
-								<a href="jqgrid.html">Jquery Grid</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Forms</span></a>
-						<ul>
-							<li>
-								<a href="form-elements.html">Smart Form Elements</a>
-							</li>
-							<li>
-								<a href="form-templates.html">Smart Form Layouts</a>
-							</li>
-							<li>
-								<a href="validation.html">Smart Form Validation</a>
-							</li>
-							<li>
-								<a href="bootstrap-forms.html">Bootstrap Form Elements</a>
-							</li>
-							<li>
-								<a href="bootstrap-validator.html">Bootstrap Form Validation</a>
-							</li>
-							<li>
-								<a href="plugins.html">Form Plugins</a>
-							</li>
-							<li>
-								<a href="wizard.html">Wizards</a>
-							</li>
-							<li>
-								<a href="other-editors.html">Bootstrap Editors</a>
-							</li>
-							<li>
-								<a href="dropzone.html">Dropzone</a>
-							</li>
-							<li>
-								<a href="image-editor.html">Image Cropping</a>
-							</li>
-							<li>
-								<a href="ckeditor.html">CK Editor</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">UI Elements</span></a>
-						<ul>
-							<li>
-								<a href="general-elements.html">General Elements</a>
-							</li>
-							<li>
-								<a href="buttons.html">Buttons</a>
-							</li>
-							<li>
-								<a href="#">Icons</a>
-								<ul>
-									<li>
-										<a href="fa.html"><i class="fa fa-plane"></i> Font Awesome</a>
-									</li>
-									<li>
-										<a href="glyph.html"><i class="glyphicon glyphicon-plane"></i> Glyph Icons</a>
-									</li>
-									<li>
-										<a href="flags.html"><i class="fa fa-flag"></i> Flags</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="grid.html">Grid</a>
-							</li>
-							<li>
-								<a href="treeview.html">Tree View</a>
-							</li>
-							<li>
-								<a href="nestable-list.html">Nestable Lists</a>
-							</li>
-							<li>
-								<a href="jqui.html">JQuery UI</a>
-							</li>
-							<li>
-								<a href="typography.html">Typography</a>
-							</li>
-							<li>
-								<a href="#">Six Level Menu</a>
-								<ul>
-									<li>
-										<a href="#"><i class="fa fa-fw fa-folder-open"></i> Item #2</a>
-										<ul>
-											<li>
-												<a href="#"><i class="fa fa-fw fa-folder-open"></i> Sub #2.1 </a>
-												<ul>
-													<li>
-														<a href="#"><i class="fa fa-fw fa-file-text"></i> Item #2.1.1</a>
-													</li>
-													<li>
-														<a href="#"><i class="fa fa-fw fa-plus"></i> Expand</a>
-														<ul>
-															<li>
-																<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-															</li>
-														</ul>
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<a href="#"><i class="fa fa-fw fa-folder-open"></i> Item #3</a>
-		
-										<ul>
-											<li>
-												<a href="#"><i class="fa fa-fw fa-folder-open"></i> 3ed Level </a>
-												<ul>
-													<li>
-														<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-													</li>
-													<li>
-														<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-													</li>
-												</ul>
-											</li>
-										</ul>	
-									</li>
-									<li>
-										<a href="#" class="inactive"><i class="fa fa-fw fa-folder-open"></i> Item #4 (disabled)</a>
-									</li>	
-									
-								</ul>
-							</li>
-						</ul>
-					</li>	
-					<li>
-						<a href="widgets.html"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Widgets</span></a>
-					</li>
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-cloud"><em>3</em></i> <span class="menu-item-parent">Cool Features!</span></a>
-						<ul>
-							<li>
-								<a href="calendar.html"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">Calendar</span></a>
-							</li>
-							<li>
-								<a href="gmap-xml.html"><i class="fa fa-lg fa-fw fa-map-marker"></i> <span class="menu-item-parent">GMap Skins</span><span class="badge bg-color-greenLight pull-right inbox-badge">9</span></a>
-							</li>
-						</ul>
-					</li>	
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent">App Views</span></a>
-						<ul>
-							<li>
-								<a href="projects.html"><i class="fa fa-file-text-o"></i> Projects</a>
-							</li>	
-							<li>
-								<a href="blog.html"><i class="fa fa-paragraph"></i> Blog</a>
-							</li>
-							<li>
-								<a href="gallery.html"><i class="fa fa-picture-o"></i> Gallery</a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-comments"></i> Forum Layout</a>
-								<ul>
-									<li><a href="forum.html">General View</a></li>
-									<li><a href="forum-topic.html">Topic View</a></li>
-									<li><a href="forum-post.html">Post View</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="profile.html"><i class="fa fa-group"></i> Profile</a>
-							</li>
-							<li>
-								<a href="timeline.html"><i class="fa fa-clock-o"></i> Timeline</a>
-							</li>
-							<li>
-								<a href="search.html"><i class="fa fa-search"></i>  Search Page</a>
-							</li>
-						</ul>		
-					</li>
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-shopping-cart"></i> <span class="menu-item-parent">E-Commerce</span></a>
-						<ul>
-							<li><a href="orders.html">Orders</a></li>
-							<li><a href="products-view.html">Products View</a></li>
-							<li><a href="products-detail.html">Products Detail</a></li>
-						</ul>
-					</li>	
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-windows"></i> <span class="menu-item-parent">Miscellaneous</span></a>
-						<ul>
-							<li>
-								<a href="../Landing_Page/" target="_blank">Landing Page <i class="fa fa-external-link"></i></a>
-							</li>
-							<li>
-								<a href="pricing-table.html">Pricing Tables</a>
-							</li>
-							<li>
-								<a href="invoice.html">Invoice</a>
-							</li>
-							<li>
-								<a href="login.html" target="_top">Login</a>
-							</li>
-							<li>
-								<a href="register.html" target="_top">Register</a>
-							</li>
-							<li>
-								<a href="forgotpassword.html" target="_top">Forgot Password</a>
-							</li>
-							<li>
-								<a href="lock.html" target="_top">Locked Screen</a>
-							</li>
-							<li>
-								<a href="error404.html">Error 404</a>
-							</li>
-							<li>
-								<a href="error500.html">Error 500</a>
-							</li>
-							<li>
-								<a href="blank_.html">Blank Page</a>
 							</li>
 						</ul>
 					</li>
@@ -809,6 +560,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 					</li>
 				</ul>
 			</nav>
+
+			
 			
 
 			<span class="minifyme" data-action="minifyMenu"> 
