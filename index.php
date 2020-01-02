@@ -46,15 +46,16 @@ if(isset($_POST['btn-login']))
   <?php 
   if(isset($_GET['inactive']))
   {
+    
    ?>
 
-   <!-- <?php
+   <?php
 // Cek apakah terdapat cookie dengan nama message
-if(isset($_COOKIE["message"])){ // Jika ada
-    echo '<div class="alert alert-danger">'.$_COOKIE["message"].'</div>'; // Tampilkan pesannya
+if(isset($_COOKIE["inactive"])){ // Jika ada
+    echo '<div class="alert alert-danger">'.$_COOKIE["inactive"].'</div>'; // Tampilkan pesannya
     setcookie("message","delete",time()-1, "/"); // Kita delete cookie message
 }
-?> -->
+?> 
             <div class='alert alert-error'>
     <button class='close' data-dismiss='alert'>&times;</button>
     <strong>Sorry!</strong> This Account is not Activated Go to your Inbox and Activate it. 

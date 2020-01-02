@@ -83,13 +83,6 @@ class USER
       exit;
      }
     }
-    if ($userRow['userType']=="1") {
-          header("Location: admin.php");
-      exit;
-         } elseif ($userRow['userType']=="2") {
-          header("Location: pegawai.php");
-      exit;
-         }
 
     
 
