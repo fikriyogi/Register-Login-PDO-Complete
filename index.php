@@ -18,7 +18,7 @@ if(isset($_POST['btn-login']))
   $user_login->redirect('home.php');
  } 
  // Masukkan log login ke tabel tbl_log
- if($user_login->log_in($email, $type)) {
+ if($user_login->log_in($id, $email, $type)) {
   $user_login->redirect('home.php');
  }
 
@@ -47,6 +47,14 @@ if(isset($_POST['btn-login']))
   if(isset($_GET['inactive']))
   {
    ?>
+
+   <!-- <?php
+// Cek apakah terdapat cookie dengan nama message
+if(isset($_COOKIE["message"])){ // Jika ada
+    echo '<div class="alert alert-danger">'.$_COOKIE["message"].'</div>'; // Tampilkan pesannya
+    setcookie("message","delete",time()-1, "/"); // Kita delete cookie message
+}
+?> -->
             <div class='alert alert-error'>
     <button class='close' data-dismiss='alert'>&times;</button>
     <strong>Sorry!</strong> This Account is not Activated Go to your Inbox and Activate it. 

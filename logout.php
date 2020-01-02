@@ -11,10 +11,10 @@ $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+$id = $_SESSION['userSession'];
 $email = $row['userEmail'];
-
  // Masukkan log logout ke tabel tbl_log
- if($user->log_out($email, $type)) {
+ if($user->log_out($id, $email, $type)) {
   $user->redirect('index.php');
  }
 

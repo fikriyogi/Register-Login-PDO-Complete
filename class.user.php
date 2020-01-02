@@ -83,6 +83,13 @@ class USER
       exit;
      }
     }
+    if ($userRow['userType']=="1") {
+          header("Location: admin.php");
+      exit;
+         } elseif ($userRow['userType']=="2") {
+          header("Location: pegawai.php");
+      exit;
+         }
 
     
 
@@ -106,55 +113,47 @@ class USER
 
 
 
-   public function log_in($email, $type)
- {
-  try
-  {       
-    $type = "login";
-   $stmt = $this->conn->prepare("INSERT INTO tbl_log(userEmail,type) VALUES(:user_mail, :type_id)");
-   $stmt->bindparam(":user_mail",$email);
-   $stmt->bindparam(":type_id",$type);
+   public function log_in($id, $email, $type)
+   {
+    try
+    { 
+      $id = $_SESSION['userSession'];      
+      $type = "login";
+     $stmt = $this->conn->prepare("INSERT INTO tbl_log(id_user,userEmail,type) VALUES(:user_id, :user_mail, :type_id)");
+     $stmt->bindparam(":user_id",$id);
+     $stmt->bindparam(":user_mail",$email);
+     $stmt->bindparam(":type_id",$type);
 
-   $stmt->execute(); 
-   return $stmt;
+     $stmt->execute(); 
+     return $stmt;
 
-  }
-  catch(PDOException $ex)
-  {
-   echo $ex->getMessage();
-  }
- }
+    }
+    catch(PDOException $ex)
+    {
+     echo $ex->getMessage();
+    }
+   }
 
- public function log_out($email, $type)
- {
-  try
-  {  
-    $type = "logout";
-   $stmt = $this->conn->prepare("INSERT INTO tbl_log(userEmail,type) VALUES(:user_mail, :type_id)");
-   $stmt->bindparam(":user_mail",$email);
-   $stmt->bindparam(":type_id",$type);
+   public function log_out($id, $email, $type)
+   {
+    try
+    {  
+      $type = "logout";
+     $stmt = $this->conn->prepare("INSERT INTO tbl_log(id_user,userEmail,type) VALUES(:user_id, :user_mail, :type_id)");
+     $stmt->bindparam(":user_id",$id);
+     $stmt->bindparam(":user_mail",$email);
+     $stmt->bindparam(":type_id",$type);
 
-   $stmt->execute(); 
-   return $stmt;
+     $stmt->execute(); 
+     return $stmt;
 
-  }
-  catch(PDOException $ex)
-  {
-   echo $ex->getMessage();
-  }
- }
+    }
+    catch(PDOException $ex)
+    {
+     echo $ex->getMessage();
+    }
+   }
   
- 
- // public function update($hp,$nama_lengkap) {
- //     try {
- //     $stmt = $this->conn->prepare('UPDATE tbl_profil SET hp = ?, nama_lengkap = ? WHERE id_user = ?');
- //     $stmt->execute(array(":hp"=>$hp, ":nama_lengkap"=>$nama_lengkap, "id_user"=>$_SESSION['userSession']);
- //     return true;
- //     } catch(PDOException $e) {
- //         echo '<p class="bg-danger">'.$e->getMessage().'</p>';
- //     }
- //     return false;
- // }
  
  public function is_logged_in()
  {

@@ -119,6 +119,43 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
             <?php } ?>
             </table>
         </div>
+
+        <hr>
+        <!-- Log Activity -->
+        <div>
+            <?php
+            $host = "localhost";
+            $user = "root";
+            $password = "";
+            $database_name = "sitendik";
+            $pdo = new PDO("mysql:host=$host;dbname=$database_name", $user, $password, array(
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            ));
+            $query = $pdo->prepare("select * from tbl_log WHERE userEmail=:user_email");
+            $query->execute(array(":user_email"=>$row['userEmail']));
+
+            // $query->execute();
+
+            ?>
+            <table>
+            <tr>
+                <td>Nis</td>
+                <td>Nama</td>
+                <td>Jenis Kelamin</td>
+                <td>TGL Lahir</td>
+            </tr>
+            <?php 
+            $no = 1;
+            while($siswa = $query->fetch()){?>
+            <tr>
+                <td><?php echo $no++?></td>
+                <td><?php echo $siswa['userEmail']?></td>
+                <td><?php echo $siswa['type']?></td>
+                <td><?php echo $siswa['log']?></td>
+            </tr>
+            <?php } ?>
+            </table>
+        </div>
         
         <!--/.fluid-container-->
         
